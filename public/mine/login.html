@@ -109,7 +109,7 @@ $('.submit').on('click',function(e){
         data:$('form').serialize(),
         success:function(info){
             if(info.success){
-                $(window).attr('location','3.html')
+                $(window).attr('location','index.html')
             }
             if(info.error===1000){
               $("form").data('bootstrapValidator').updateStatus('username','INVALID','callback')

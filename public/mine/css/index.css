@@ -1,0 +1,91 @@
+.header{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(60,141,188,.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+.header span{
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+.header .header-menu{
+    margin-left: 80px;
+}
+.header .header-back{
+    margin-right: 20px;
+}
+.menu{
+    color: #fff;
+    width: 180px;
+    background-color: #222D32;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.content{
+    padding-left: 180px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.brand{
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 50px;
+    height: 50px;
+    margin-left: 50px;
+}
+.menu{
+    text-align: center;
+}
+.menu .head{
+  margin:100px 0 50px 0;
+}
+.menu img{
+    border-radius:50%;
+}
+.menu p{
+    font-size: 20px;
+    line-height: 40px;
+}
+.menu .list{
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 40px;
+}
+.category-list{
+    display: none;
+}
+.menu .list i{
+    margin-right: 5px;
+}
+.menu-list .list.active{
+    background-color: #1D1F21;
+}
+.category-list p{
+    margin: 0;
+    font-size: 14px;
+}
+.content .bread{
+    width: 100%;
+    margin-top: 80px;
+
+}
+.content .breadcrumb{
+    width: 98%;
+    margin: 0 auto;
+}
+.content .breadcrumb a{
+    text-decoration: none;
+}
+.content .table{
+    width: 98%;
+    margin: 10px auto;
+}
