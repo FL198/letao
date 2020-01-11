@@ -108,7 +108,7 @@ $('.submit').on('click',function(e){
         url:'/employee/employeeLogin',
         data:$('form').serialize(),
         success:function(info){
-            if(info.success){
+            if(info.success===true){
                 $(window).attr('location','index.html')
             }
             if(info.error===1000){

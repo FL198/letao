@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <title>index</title>
+  <style>
+      #myModal2 .modal-dialog {
+          width: 300px;
+      }
+      .category-list{
+          display: none;
+      }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-menu pull-left">
+        <span class="glyphicon glyphicon-align-justify"></span>
+    </div>
+    <div class="header-back pull-right">
+      <span class="glyphicon glyphicon-log-out back"></span>
+  </div>
+  </div>
+  <div class="menu">
+    <div class="brand pull-left">极客营</div>
+    <div class="head">
+      <img src="./image/default.png" width="100">
+      <p>超级管理员</p>
+      <div class="menu-list">
+          <div class="list user"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></div>
+          <div class="category">
+                <div class="category-head">
+                  <i class="glyphicon glyphicon-align-justify"></i><span>分类管理</span>
+                </div>
+                <div class="category-list">
+                    <p class="category_one">一级分类</p>
+                    <p class="category_two">二级分类</p class="category_one">
+                </div>
+          </div>
+          <div class="list goods"><i class="glyphicon glyphicon-tag"></i><span>商品管理</span></div>
+      </div>
+  </div>
+  </div>
+  <div class="content">
+    <div class="bread">
+      <ol class="breadcrumb">
+        <li><a href="index.html">管理系统</a></li>
+        <li class="active">商品管理</li>
+      </ol>
+    </div>
+    <button type="button" class="btn btn-default add" style="margin:20px 0 10px 10px;">添加商品</button>
+    <table class="table table-bordered user-table">
+        <tr>
+            <th class="">序号</th>
+            <th class="">商品名称</th>
+            <th class="">商品描述</th>
+            <th class="">商品库存</th>
+            <th class="">商品尺寸</th>
+            <th class="">商品状态</th>
+            <th class="">操作</th>
+        </tr>
+    </table>
+  </div>
+  <div>
+    <div class="modal fade" tabindex="-1" id="myModel1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加商品</h4>
+          </div>
+          <div class="modal-body">
+            <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                请选择二级分类 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="#">Action</a></li> -->
+              </ul>
+            </div>
+            <form action="">
+              <input type="text" class="form-control" placeholder="请输入商品名称" style="margin:20px 0">
+              <div class="form-group">
+                <textarea class="form-control" id="message-text">请输入商品描述</textarea>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入商品库存" style="margin:20px 0">
+              <input type="text" class="form-control" placeholder="请输入商品尺码" style="margin:20px 0">
+              <input type="text" class="form-control" placeholder="请输入商品原价" style="margin:20px 0">
+              <input type="text" class="form-control" placeholder="请输入商品现价" style="margin:20px 0">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary">添加</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div>
+  </div>
+     <!-- 模态框（Modal） -->
+     <div>
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                  温馨提示
+              </h4>
+            </div>
+            <div class="modal-body" style="color:brown">
+              <span class="glyphicon glyphicon-pencil
+              "></span>您确定要退出后台管理系统吗？
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消
+              </button>
+              <button type="button" class="btn btn-primary" id="go-back">
+                退出
+              </button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+     </div>
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./js/index.js"></script>
+<script>
+  $('.add').click(function(){
+       $('#myModel1').modal('show')
+  })
+  $('.goods').addClass('active')
+</script>
+</body>
+</html>

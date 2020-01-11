@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <title>category_two</title>
+  <style>
+    .modal-dialog {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-menu pull-left">
+      <span class="glyphicon glyphicon-align-justify"></span>
+    </div>
+    <div class="header-back pull-right">
+      <span class="glyphicon glyphicon-log-out back"></span>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="brand pull-left">极客营</div>
+    <div class="head">
+      <img src="./image/default.png" width="100">
+      <p>超级管理员</p>
+      <div class="menu-list">
+        <div class="list user"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></div>
+        <div class="category">
+          <div class="category-head">
+            <i class="glyphicon glyphicon-align-justify"></i><span>分类管理</span>
+          </div>
+          <div class="category-list">
+            <p class="category_one">一级分类</p>
+            <p class="category_two">二级分类</p class="category_one">
+          </div>
+        </div>
+        <div class="list goods"><i class="glyphicon glyphicon-tag"></i><span>商品管理</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="bread">
+      <ol class="breadcrumb">
+        <li><a href="index.html">管理系统</a></li>
+        <li class="active">分类管理</li>
+        <li class="active">二级分类</li>
+      </ol>
+    </div>
+    <button type="button" class="btn btn-default add" style="margin:20px 0 10px 10px;">添加分类</button>
+    <table class="table table-bordered user-table">
+      <thead>
+        <tr>
+          <th class="">序号</th>
+          <th class="">一级分类名称</th>
+          <th class="">二级分类名称</th>
+          <th class="">二级分类名称LOGO</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="page pull-right" style="margin-right:30px;">
+      <ul class="pagination"></ul>
+    </div>
+  </div>
+  <!-- 模态框（Modal） -->
+  <div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              添加分类
+            </h4>
+          </div>
+          <div>
+            <div class="modal-body">
+              <!-- Single button -->
+              <div class="btn-group">
+                <form>
+                  <div class="form-group">
+                    <select class="form-control">
+                        请输入
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入二级分类" style="margin:20px 0" name="secondName">
+                  </div>
+                  <div class="form-group">
+                    <div class="jquery-fileupload">
+                      <div>
+                        <input id="uploadImg" type="file" name="uploadImg" multiple style="display:none"
+                          name="photo" /><button type="button" class="btn btn-default choose">上传文件</button>
+                        <img class="thumbnail">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-default pretend hidden" data-dismiss="modal"></button>
+                <input type="submit" class="submit btn btn-primary" value="添加">
+                <input type="reset" class="hidden btn btn-primary reset">
+              </div>
+              </form>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal -->
+          <!-- 模态框（Modal） -->
+        </div>
+      </div>
+
+      <!-- 模态框（Modal） -->
+      <div>
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                  温馨提示
+                </h4>
+              </div>
+              <div class="modal-body" style="color:brown">
+                <span class="glyphicon glyphicon-pencil
+              "></span>您确定要退出后台管理系统吗？
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-primary" id="go-back">
+                  退出
+                </button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal -->
+        </div>
+        <script src="./lib/jquery/jquery.min.js"></script>
+        <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+        <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+        <script src="./lib/nprogress/nprogress.js"></script>
+        <script src="./lib/artTemplate/template-web.js"></script>
+        <script src="./js/index.js?v=20200111"></script>
+        <script>
+          var obj = {
+            1: '运动馆',
+            2: '女士馆',
+            3: '男士馆',
+            4: '帆布馆'
+          }
+        </script>
+        <script type="text/html" id='tmp-info'>
+    {{each list v i}}
+      <tr>
+          <td>{{v.id}}</td>
+          <td>{{status[v.categoryId]}}</td>
+          <td>{{v.brandName}}</td>
+          <td><img src="{{v.brandLogo}}" width=100></td>
+      </tr>
+    {{/each}}
+</script>
+<script type="text/html" id='tmp-select'>
+    {{each list v i}}
+    <option category="{{v.categoryName}}">{{v.categoryName}}</option>
+    {{/each}}
+</script>
+        <script src="./js/category_two.js"></script>
+        <script src="./js/index.js"></script>
+</body>
+
+</html>
