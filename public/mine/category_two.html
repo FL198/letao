@@ -89,28 +89,29 @@
               <div class="btn-group">
                 <form>
                   <div class="form-group">
-                    <select class="form-control">
-                        请输入
+                    <select class="form-control" value="1">
                     </select>
                   </div>
+                  <input type="hidden" name="categoryId" class="categoryId" value="1">
+                  <input type="hidden" name="hot" value="1">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="请输入二级分类" style="margin:20px 0" name="secondName">
+                    <input type="text" class="form-control" placeholder="请输入二级分类" style="margin:20px 0"
+                      name="brandName">
                   </div>
                   <div class="form-group">
-                    <div class="jquery-fileupload">
-                      <div>
-                        <input id="uploadImg" type="file" name="uploadImg" multiple style="display:none"
-                          name="photo" /><button type="button" class="btn btn-default choose">上传文件</button>
-                        <img class="thumbnail">
-                      </div>
-                    </div>
+                    <label for="fileupload" class="btn btn-default">上传图片</label>
+                    <input type="file" id="fileupload" name='pic1' data-url="/category/addSecondCategoryPic"
+                      style="display:none;">
+                  </div>
+                  <div class="form-group img">
+                    <img src="./image/none.png" width="100">
+                    <input type="hidden" name="brandLogo" class="brandLogo">
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-default pretend hidden" data-dismiss="modal"></button>
-                <input type="submit" class="submit btn btn-primary" value="添加">
-                <input type="reset" class="hidden btn btn-primary reset">
+                <button type="button" class="btn btn-default cancel" data-dismiss="modal">取消</button>
+                <button type="submit" class="submit btn btn-primary">添加</button>
+                <button type="reset" class="reset" style="display:none;"></button>
               </div>
               </form>
             </div><!-- /.modal-content -->
@@ -153,7 +154,8 @@
         <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
         <script src="./lib/nprogress/nprogress.js"></script>
         <script src="./lib/artTemplate/template-web.js"></script>
-        <script src="./js/index.js?v=20200111"></script>
+        <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+        <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
         <script>
           var obj = {
             1: '运动馆',
@@ -172,13 +174,14 @@
       </tr>
     {{/each}}
 </script>
-<script type="text/html" id='tmp-select'>
+        <script type="text/html" id='tmp-select'>
     {{each list v i}}
-    <option category="{{v.categoryName}}">{{v.categoryName}}</option>
+    <option value={{i+1}}>{{v.categoryName}}</option>
     {{/each}}
 </script>
-        <script src="./js/category_two.js"></script>
-        <script src="./js/index.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/category_two.js"></script>
+
 </body>
 
 </html>

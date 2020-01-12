@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <title>index</title>
   <style>
       #myModal2 .modal-dialog {
@@ -54,16 +56,22 @@
     </div>
     <button type="button" class="btn btn-default add" style="margin:20px 0 10px 10px;">添加商品</button>
     <table class="table table-bordered user-table">
+      <thead>
         <tr>
-            <th class="">序号</th>
-            <th class="">商品名称</th>
-            <th class="">商品描述</th>
-            <th class="">商品库存</th>
-            <th class="">商品尺寸</th>
-            <th class="">商品状态</th>
-            <th class="">操作</th>
-        </tr>
+          <th class="">序号</th>
+          <th class="">商品名称</th>
+          <th class="">商品描述</th>
+          <th class="">商品库存</th>
+          <th class="">商品尺寸</th>
+          <th class="">商品状态</th>
+          <th class="">操作</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
     </table>
+    <div class="page pull-right" style="margin-right:30px;">
+      <ul class="pagination"></ul>
+  </div>
   </div>
   <div>
     <div class="modal fade" tabindex="-1" id="myModel1" role="dialog">
@@ -74,30 +82,51 @@
             <h4 class="modal-title">添加商品</h4>
           </div>
           <div class="modal-body">
-            <!-- Single button -->
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                请选择二级分类 <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <!-- <li><a href="#">Action</a></li> -->
-              </ul>
-            </div>
-            <form action="">
-              <input type="text" class="form-control" placeholder="请输入商品名称" style="margin:20px 0">
+            <form>
               <div class="form-group">
-                <textarea class="form-control" id="message-text">请输入商品描述</textarea>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="second-name">请选择二级分类</span> <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu select">
+                  </ul>
               </div>
-              <input type="text" class="form-control" placeholder="请输入商品库存" style="margin:20px 0">
-              <input type="text" class="form-control" placeholder="请输入商品尺码" style="margin:20px 0">
-              <input type="text" class="form-control" placeholder="请输入商品原价" style="margin:20px 0">
-              <input type="text" class="form-control" placeholder="请输入商品现价" style="margin:20px 0">
-            </form>
+                <div class="form-group">
+                  <input type="hidden" name="brandId" class="brandId">
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="proName" placeholder="请输入商品名称" style="margin-top:28px;">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="proDesc" id="message-text" placeholder="请输入商品描述"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="number" name="num" class="form-control" placeholder="请输入商品库存">
+              </div>
+              <div class="form-group">
+                <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+              </div>
+              <div class="form-group">
+                <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="price" placeholder="请输入商品现价">
+              </div>
+              <div class="form-group">
+                  <label class="btn btn-default" for="fileupload">上传图片</label>
+                  <input type="file" multiple id='fileupload' name="pic1" data-url="/product/addProductPic" style="display:none;">
+              </div>
+              <div class="form-group img">
+                  <input type="hidden" name="picStatus">
+              </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary">添加</button>
+            <button class="btn btn-default cancel" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">添加</button>
+            <input type="reset" class="reset" style="display:none;">
           </div>
+        </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -133,12 +162,31 @@
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
-<script src="./js/index.js"></script>
-<script>
-  $('.add').click(function(){
-       $('#myModel1').modal('show')
-  })
-  $('.goods').addClass('active')
+<script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/category.js"></script>
+<script type="text/html" id='tmp-info'>
+    {{each list v i}}
+      <tr>
+        <td>{{v.id}}</td>
+        <td>{{v.proName}}</td>
+        <td>{{v.proDesc}}</td>
+        <td>{{v.num}}</td>
+        <td>{{v.size}}</td>
+        <td>{{if v.statu==1}}已上架{{else}}已下架{{/if}}</td>
+        <td><button class="btn {{if v.statu==1}}btn-danger{{else}}btn-success{{/if}}">{{if v.statu==1}}下架{{else}}上架{{/if}}</button></td>
+      </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id='tmp-category'>
+    {{each list v i}}
+        <li><a data-id={{v.id}} data-name={{v.brandName}} href="#">{{v.brandName}}</a></li>
+    {{/each}}
 </script>
 </body>
 </html>

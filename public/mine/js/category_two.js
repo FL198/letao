@@ -39,37 +39,62 @@ function setPage(pageCurrent,pageSum,callback){
 render()
 
 $('form').bootstrapValidator({
+  excluded:[],
   feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',
     invalid: 'glyphicon glyphicon-remove',
     validating: 'glyphicon glyphicon-refresh'
   },
   fields:{
-    secondName:{
+    brandName:{
       validators: {
         notEmpty: {
           message: '请输入二级分类名称'
         }
       }
+    },
+    brandLogo:{
+      validators:{
+        notEmpty:{
+          message:'请上传图片'
+        }
+      }
     }
   }
 });
+$('.cancel').click(function(){
+    $('.img img').attr('src','./image/none.png')
+    $('.reset').click()
+    $('form').data('bootstrapValidator').resetForm()
+})
+$('#fileupload').fileupload({
+  dataType:'json',
+  done:function(e,data){
+    $('.img img').attr('src',data.result.picAddr)
+    $('.brandLogo').val(data.result.picAddr)
+    $('form').data('bootstrapValidator').updateStatus('brandLogo',"VALID")
+  }
+})
 
-// var validator=$('form').data('bootstrapValidator')
-// $("form").on('success.form.bv', function (e) {
-//   e.preventDefault();
-//   $('.pretend').click()
-//       var categoryName=$('.categoryName').val()
-//       $.ajax({
-//           url:'/category/addTopCategory',
-//           type:'post',
-//           data:{categoryName},
-//           success:function(info){
-//               if(info.success){
-//                 render()
-//               }
-//           }
-//       })
-//       validator.resetForm()
-//       $('.reset').click()
-// });
+$('select').on('change',function(){
+    $('.categoryId').val($(this).val())
+})
+$("form").on('success.form.bv', function (e) {
+  e.preventDefault();
+  $.ajax({
+      type:'post',
+      dataType:'json',
+      data:$('form').serialize(),
+      url:'/category/addSecondCategory',
+      success:function(info){
+          if(info.success){
+            $('#myModal').modal('hide')
+            $('form').data("bootstrapValidator").resetForm( true );
+            $('.img img').attr('src','./image/none.png')
+            currentPage = 1;
+            render();
+          }
+      }
+  })
+  $('form').data('bootstrapValidator').resetForm()
+});
