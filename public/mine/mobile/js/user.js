@@ -1,0 +1,19 @@
+$.ajax({
+    url:'/cart/queryCart',
+    success:function(info){
+      if(info.error===400){
+        window.location.href="../html/login.html"
+      }
+    }
+})
+$('.exit').click(function(){
+    $.ajax({
+      url:'/user/logout',
+      dataType:'json',
+      success:function(info){
+        if(info.success){
+          window.location.href="../html/login.html"
+        }
+      }
+    })
+})
