@@ -2,7 +2,7 @@ $.ajax({
     url:'/cart/queryCart',
     success:function(info){
       if(info.error===400){
-        window.location.href="../html/login.html"
+        window.location.href="../html/login.html?url=../html/user.html"
       }
     }
 })
@@ -12,7 +12,7 @@ $('.exit').click(function(){
       dataType:'json',
       success:function(info){
         if(info.success){
-          window.location.href="../html/login.html"
+          window.location.href="../html/login.html?url=../html/user.html"
         }
       }
     })

@@ -136,6 +136,44 @@ i {
   height: 100%;
   position: relative;
 }
+.lt-content {
+  background-color: #fff;
+  padding: 0 20px;
+}
+.lt-content .search-word {
+  text-align: center;
+  padding: 0 10px;
+  margin: 10px 0 10px 0;
+  position: relative;
+}
+.lt-content .search-word input {
+  height: 33px;
+  width: 95%;
+  font-size: 16px;
+}
+.lt-content .search-word button {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+.lt-content .search-history {
+  padding: 0 22px;
+}
+.lt-content .search-history ul {
+  margin-top: 10px;
+  width: 100%;
+  border-top: 1px dotted orangered;
+  border-right: 1px dotted orangered;
+  border-left: 1px dotted orangered;
+}
+.lt-content .search-history ul li {
+  padding-left: 10px;
+  width: 100%;
+  border-bottom: 1px dotted orangered;
+}
+.lt-content .search-history ul li i {
+  margin: 3px 5px 0 0;
+}
 .lt-content .brand ul li {
   width: 33.3%;
   float: left;
@@ -172,4 +210,21 @@ i {
 }
 .lt-content .product li a button {
   margin: 10px auto;
+}
+.lt-content {
+  width: 100%;
+}
+.lt-content .search-word {
+  margin-bottom: 0;
+}
+.lt-content .search_menu {
+  width: 100%;
+  background-color: #eee;
+  display: flex;
+  justify-content: space-between;
+}
+.lt-content .search_menu a {
+  padding: 8px;
+  text-align: center;
+  width: 25%;
 }

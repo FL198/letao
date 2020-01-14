@@ -26,6 +26,8 @@ tbody {
 html {
   width: 100%;
   height: 100%;
+  min-width: 320px;
+  max-width: 640px;
 }
 body {
   font-size: 14px;
@@ -70,6 +72,8 @@ i {
 .lt-wrap {
   width: 100%;
   height: 100%;
+  min-width: 320px;
+  max-width: 640px;
 }
 .lt-wrap .lt-header,
 .lt-wrap .lt-footer {
@@ -81,6 +85,7 @@ i {
   z-index: 5;
 }
 .lt-wrap .lt-header {
+  width: 100%;
   color: #fff;
   font-size: 20px;
   top: 0;
@@ -91,7 +96,8 @@ i {
 }
 .lt-wrap .lt-header .header-home,
 .lt-wrap .lt-header .header-search,
-.lt-wrap .lt-header .header-back {
+.lt-wrap .lt-header .header-back,
+.lt-wrap .lt-header .header-refresh {
   width: 50px;
   height: 50px;
   position: absolute;
@@ -101,13 +107,15 @@ i {
 .lt-wrap .lt-header .header-back {
   left: 0;
 }
-.lt-wrap .lt-header .header-search {
+.lt-wrap .lt-header .header-search,
+.lt-wrap .lt-header .header-refresh {
   right: 0;
 }
 .lt-wrap .lt-header .header-title {
   width: 100%;
 }
 .lt-wrap .lt-footer {
+  width: 100%;
   line-height: 30px;
   bottom: 0;
   display: flex;

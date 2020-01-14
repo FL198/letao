@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
+  <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/search-list.css">
+  <title>搜索中心</title>
+</head>
+
+<body>
+  <div class="lt-wrap">
+    <div class="lt-header">
+      <div class="header-back">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </div>
+      <div class="header-title">搜索中心</div>
+    </div>
+    <div class="lt-content">
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <div class="search-word">
+            <form>
+              <input type="text" class="mui-input-clear" placeholder="请输入搜索关键字">
+              <button type="submit" class="mui-btn mui-btn-primary search">搜索</button>
+            </form>
+          </div>
+          <div class="search_menu">
+            <a href="#">上架时间<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            <a href="#">价格<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            <a href="#">库存<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            <a href="#">折扣<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+          </div>
+          <div class="product">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lt-footer">
+      <div class="footer-home">
+        <a href="main.html">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <p>首页</p>
+        </a>
+      </div>
+      <div class="footer-category">
+        <a href="category.html">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          <p>分类页</p>
+        </a>
+      </div>
+      <div class="footer-cart">
+        <a href="cart.html">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <p>购物车</p>
+        </a>
+      </div>
+      <div class="footer-user">
+        <a href="user.html">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <p>用户中心</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="../lib/mui/js/mui.js"></script>
+  <script src="../lib/zepto/zepto.min.js"></script>
+  <script src="../lib/artTemplate/template-web.js?v=20200115"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/search-list.js?v=20200116"></script>
+  <script type="text/html" id='tmp-info'>
+    {{each list v i}}
+    <li data-id={{v.id}}>
+      <a href="#">
+        <img src="{{v.pic[0].picAddr}}">
+        <p>{{v.proName}}</p>
+        <div class="desc">
+          <span class="price">¥{{v.price}}</span><del class="ori_price">¥{{v.oldPrice}}</del>
+        </div>
+        <button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">立即购买</button>
+      </a>
+    </li>
+    {{/each}}
+  </script>
+</body>
+</html>

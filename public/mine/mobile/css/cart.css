@@ -136,40 +136,26 @@ i {
   height: 100%;
   position: relative;
 }
-.lt-content .brand ul li {
-  width: 33.3%;
-  float: left;
+.lt-content i {
+  font-size: 20px;
 }
-.lt-content .brand ul li a {
-  width: 33.3%;
+.lt-content .good-photo {
+  width: 30%;
 }
-.lt-content .brand ul li a img {
+.lt-content .good-desc {
+  width: 60%;
+}
+.lt-content .good-name {
   width: 100%;
+  color: #000;
 }
-.lt-content .product {
-  width: 100%;
-}
-.lt-content .product li {
-  text-align: center;
+.mui-popup-inner .mui-popup-text span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
   border: 1px solid #ccc;
-  padding: 3px 5px;
-  float: left;
-  width: 45%;
-  margin: 6px;
+  margin: 3px;
 }
-.lt-content .product li a {
-  display: block;
-  width: 100%;
-}
-.lt-content .product li a p {
-  text-align: left;
-}
-.lt-content .product li a img {
-  width: 100%;
-}
-.lt-content .product li a .price {
-  color: red;
-}
-.lt-content .product li a button {
-  margin: 10px auto;
+.mui-popup-inner .mui-popup-text span.active {
+  background-color: orange;
 }

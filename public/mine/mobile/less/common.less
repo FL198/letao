@@ -5,6 +5,8 @@ body,div,ul,li,h1,h2,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th
 html{
   width: 100%;
   height: 100%;
+  min-width: 320px;
+  max-width: 640px;
 }
 body{
   font-size: 14px;
@@ -44,6 +46,8 @@ em,i{
 .lt-wrap{
     width: 100%;
     height: 100%;
+    min-width: 320px;
+    max-width: 640px;
     .lt-header,.lt-footer{
       text-align: center;
       width: 100%;
@@ -53,6 +57,7 @@ em,i{
       z-index: 5;
   }
   .lt-header{
+    width: 100%;
     color: #fff;
     font-size: 20px;
     top: 0;
@@ -60,7 +65,7 @@ em,i{
       color: #fff;
       font-size: 20px;
     }
-    .header-home,.header-search,.header-back{
+    .header-home,.header-search,.header-back,.header-refresh{
       width: 50px;
       height: 50px;
       position: absolute;
@@ -69,7 +74,7 @@ em,i{
     .header-home,.header-back{
       left: 0;
     }
-    .header-search{
+    .header-search,.header-refresh{
       right: 0;
     }
     .header-title{
@@ -77,6 +82,7 @@ em,i{
     }
   }
   .lt-footer{
+    width: 100%;
     line-height: 30px;
     bottom: 0;
     display: flex;

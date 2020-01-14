@@ -15,7 +15,8 @@ $('.sure').click(function(){
             mui.toast('用户名或密码错误')
           }
           if(info.success){
-            console.log(window.location.history)
+            var oriUrl=location.search.replace('?url=','')
+            location.href=''+oriUrl+''
           }
         }
       })

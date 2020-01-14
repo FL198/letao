@@ -6,21 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
   <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/cart.css">
-  <title>购物车</title>
+  <link rel="stylesheet" href="../css/search.css">
+  <title>搜索中心</title>
 </head>
 <body>
     <div class="lt-wrap">
         <div class="lt-header">
-          <div class="header-back back">
+          <div class="header-back">
             <i class="fa fa-angle-left" aria-hidden="true"></i>
           </div>
-            <div class="header-title">购物车</div>
+            <div class="header-title">搜索中心</div>
         </div>
         <div class="lt-content">
           <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
-              <ul class="mui-table-view" id='goods'></ul>
+              <div class="search-word">
+                <form>
+                    <input type="text" class="mui-input-clear" placeholder="请输入搜索关键字">
+                    <button type="submit" class="mui-btn mui-btn-primary submit">搜索</button>
+                </form>
+              </div>
+              <div class="search-history">
+                  <div class="title clearfix">
+                    <span class="fl">搜索历史</span>
+                    <span class="fr del-all"><i class="fa fa-trash-o" aria-hidden="true"></i>清空记录</span>
+                  </div>
+                  <ul></ul>
+              </div>
             </div>
           </div>
         </div>
@@ -38,7 +50,7 @@
               </a>
             </div>
             <div class="footer-cart">
-              <a href="javascript:void(0)" class="active">
+              <a href="cart.html">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <p>购物车</p>
               </a>            
@@ -55,33 +67,11 @@
 <script src="../lib/zepto/zepto.min.js"></script>
 <script src="../lib/artTemplate/template-web.js?v=20200114"></script>
 <script src="../js/common.js"></script>
-<script src="../js/cart.js"></script>
-<script type="text/html" id='tmp-info'>
-  {{each list v i}}
-  <li class="mui-table-view-cell">
-    <div class="mui-slider-right mui-disabled">
-      <a class="mui-btn mui-btn-blue oper-edit" data-size={{v.size}} data-id={{v.id}} data-num={{v.num}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-      <a class="mui-btn mui-btn-red oper-del" data-id={{v.id}}><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-    </div>
-    <div class="mui-slider-handle">
-      <div class="info">
-        <div class="good-photo fl">
-          <img src="{{v.pic[0].picAddr}}" width="80" height="60"><br>
-          <input type="checkbox">
-        </div>
-        <div class="good-desc fl">
-          <p class="good-name">
-            {{v.proName}}
-          </p>
-          <div class="desc clearfix">
-            <p class="fl"><span style="color:red;">¥{{v.price}}</span> <del>¥{{v.oldPrice}}</del></p><p class="fr">{{v.num}}双</p>
-          </div>
-          <p>鞋码：{{v.size}}</p>
-        </div>
-    </div>
-    </div>     
-  </li>
-  {{/each}}
+<script src="../js/search.js?v=20200114"></script>
+<script type="text/html" id="tmp-history">
+    {{each list v i}}
+    <li proName={{v}}>{{v}}<a href="#" class="sm-btn-del" data-del={{i}}><i class="fa fa-window-close-o fr" aria-hidden="true"></i></a></li>
+    {{/each}}
 </script>
 </body>
 </html>
