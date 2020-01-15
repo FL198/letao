@@ -8,10 +8,18 @@ function render(){
       var htmlStr=template('tmp-info',{list:info})
       $('#goods').html(htmlStr)
       $('.oper-del').on('tap',function(){
+        var arr=[]
         var id=$(this).attr('data-id')
+        arr.push(id)
+        if($('.check-list:checked').length>0){
+          arr=[]
+          $('.check-list:checked').each(function(i,v){
+            arr.push($(this).attr('data-id'))
+          })
+        }
         $.ajax({
           url:'/cart/deleteCart',
-          data:{id},
+          data:{id:arr},
           success:function(info){
             if(info.success){
               render()
